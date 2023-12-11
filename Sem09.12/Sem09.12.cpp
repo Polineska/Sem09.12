@@ -8,6 +8,60 @@
 #include "math.h"
 #include <fstream>
 
+/*Homework 2.12*/
+/*Task 3*/
+
+int change_array(int* array, int n) {
+	int* pa = array;
+	int* pla = array + (n - 1);
+	int t = *pa;
+	*pa = *pla;
+	*pla = t;
+	return *array;
+}
+
+
+/*Homework 9.12*/
+/*Task3*/
+int change_elements(int* array1, int m)
+{
+	int element = 0;
+	for (int i = 0; i < m; i++)
+	{
+		if (i % 2 == 0)
+		{
+			element = array1[i];
+			array1[i] = array1[i + 1];
+			array1[i + 1] = element;
+		}
+	}
+	return *array1;
+
+}
+
+/*Task5*/
+int add(int a, int b) {
+	return a + b;
+}
+
+int subtract(int a, int b) {
+	return a - b;
+}
+
+int multiply(int a, int b) {
+	return a * b;
+}
+
+int divide(int a, int b) {
+	return a / b;
+}
+
+int end(int a, int b) {
+	return 0;
+}
+
+
+
 double* memory_for_array(int length){
     std::cin >> length;
     double* array = new double[length];
@@ -133,9 +187,79 @@ int main()
     delete_arraydn(arr, rows, cols);
     delete_arraydn1(arr, rows, cols);
 
+	/*Homework 2.12*/
+/*Task3*/
+	std::cout << "/*Task3*/" << std::endl;
+	int n = 0;
+	std::cin >> n;
+	int* array = memory_for_array(n);
+	elements(array, n);
+	change_array(array, n);
+	show_array(array, n);
+	delete_array(array, n);
+	std::cout << "" << std::endl;
 
+	/*Task4*/
+	std::cout << "/*Task4*/" << std::endl;
+	double** p = 0;
+	p = new double*;
+	*p = new double;
+	**p = 2;
+	std::cout << **p << std::endl;
+	std::cout << "";
+	delete* p;
+	delete p;
+	std::cout << "" << std::endl;
+
+	/*Homework 9.12*/
+	/*Task3*/
+	std::cout << "/*Task4.9.12*/" << std::endl;
+	int m = 12;
+	int* array1 = memory_for_array(m);
+	elements(array1, m);
+	change_elements(array1, m);
+	show_array(array1, m);
+	delete_array(array1, m);
+	std::cout << "" << std::endl;
+
+	/*Task5*/
+	int num1, num2;
+	char operation;
+
+	int (*operationFunc)(int, int); // Указатель на функцию
+
+	while (true) {
+		std::cout << "Enter two digits and symbol of operation: ";
+		std::cin >> num1 >> num2 >> operation;
+
+		if (operation == ' ') {
+			break;
+		}
+		// Установка указателя на соответствующую функцию в зависимости от символа операции
+		switch (operation) {
+		case '+':
+			operationFunc = add;
+			break;
+		case '-':
+			operationFunc = subtract;
+			break;
+		case '*':
+			operationFunc = multiply;
+			break;
+		case '/':
+			operationFunc = divide;
+			break;
+
+			// Вызов функции, указанной указателем, и вывод результата
+			int result = operationFunc(num1, num2);
+			std::cout << "Result: " << result << std::endl;
+		}
+
+		return 0;
+	}
 
 
 
     return 0;
 }
+
