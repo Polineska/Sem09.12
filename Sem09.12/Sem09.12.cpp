@@ -76,27 +76,6 @@ void print(int** arr, int rows, int cols)
     }
 }
 
-void Calculate(int (*Operator)(int*, int*), int A, int B, char C) {
-    int res;
-    switch (C) {
-    case '+':
-        res = Operator(&A, &B);
-        std::cout << res << std::endl;
-        break;
-    case '-':
-        res = Operator(&A, &B);
-        std::cout << res << std::endl;
-        break;
-    case '*':
-        res = Operator(&A, &B);
-        std::cout << res << std::endl;
-        break;
-    case '/':
-        res = Operator(&A, &B);
-        cout << res << endl;
-        break;
-    }
-}
 
 
 int main()
@@ -157,24 +136,6 @@ int main()
 
 
 
-    /*Task5*/
-    int n1, n2; 
-    std::cin >> n1 >> n2;
-    char c; 
-    std::cin >> c;
 
-    switch (c) {
-    case '+':
-        Calculate(Plus, a, b, c);
-        break;
-    case '-':
-        Calculate(Minus, a, b, c);
-        break;
-    case '*':
-        Calculate(Mul, a, b, c);
-        break;
-    case '/':
-        Calculate(Div, a, b, c);
-        break;
     return 0;
 }
