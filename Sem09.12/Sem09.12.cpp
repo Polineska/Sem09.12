@@ -81,7 +81,7 @@ void print(int** arr, int rows, int cols)
 int main()
 {
     /*Task1*/
-    /*const float a = 0.0;
+    const float a = 0.0;
     const float* const ptr = &a;
 
     typedef long int* ptr;
@@ -107,7 +107,7 @@ int main()
 
     typedef unsigned int* ptr;
     unsigned int r = 0;
-    unsigned int* const  ptr = &r;*/
+    unsigned int* const  ptr = &r;
 
 
     /*Task2*/
