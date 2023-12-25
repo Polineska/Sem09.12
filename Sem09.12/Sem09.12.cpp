@@ -197,7 +197,8 @@ int main()
 
 	/*Task5*/
 	std::cout << "/*Task5.9.12*/" << std::endl;
-	int num1, num2;
+	int num1 = 0;
+	int num2 = 0;
 	char operation;
 	while (std::cin.get() != '\n'); //отчистили поток ввода
 	operation = std::cin.get();
