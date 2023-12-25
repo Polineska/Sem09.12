@@ -39,6 +39,28 @@ int change_elements(int* array1, int m)
 
 }
 
+int* memory_for_array1(int length) {
+	int* array1 = new int[length];
+	return array1;
+}
+
+void elements1(int* array, int length) {
+	for (int i = 0; i < length; i++) {
+		std::cin >> array[i];
+	}
+}
+
+void show_array1(int* array, int length) {
+	for (int i = 0; i < length; i++) {
+		std::cout << array[i] << " ";
+	}
+}
+
+void delete_array1(int* array, int length) {
+	;   delete[]array;
+	array = 0;
+}
+
 /*Task5*/
 int add(int a, int b) {
 	return a + b;
@@ -55,15 +77,12 @@ int multiply(int a, int b) {
 int divide(int a, int b) {
 	return a / b;
 }
+//
 
-int end(int a, int b) {
-	return 0;
-}
 
 
 
 double* memory_for_array(int length){
-    std::cin >> length;
     double* array = new double[length];
     return array;
 }
@@ -76,7 +95,7 @@ void elements(double *array, int length) {
 
 void show_array(double* array, int length) {
     for (int i = 0; i < length; i++) {
-        std::cout << array[i] << "";
+        std::cout << array[i] << " ";
     }
 }
 
@@ -84,16 +103,20 @@ void delete_array(double *array, int length) {
 ;   delete[]array;
     array = 0;
 }
+
 void delete_arraydn(int** array, int a, int b) {
-    delete[]array;
-    array = 0;
+	delete[]array;
+	array = 0;
 }
+
 void delete_arraydn1(int** arr, int rows, int cols) {
-    for (int i = 0; i < rows; i++) //очистка памяти
-    {
-        delete[] arr[i];
-    }
+	for (int i = 0; i < rows; i++) //очистка памяти
+	{
+		delete[] arr[i];
+	}
+	arr = 0;
 }
+
 
 int** create(int rows, int cols)
 {
@@ -134,47 +157,31 @@ void print(int** arr, int rows, int cols)
 
 int main()
 {
-    /*Task1*/
-    const float a = 0.0;
-    const float* const ptr = &a;
-
-    typedef long int* ptr;
-    long int b = 9;
-    long int* ptr = &b; //инициализируем ptr адресом значения переменной 
-    
-    double c = 0;
-    double* ptr = &c;
-
-    const short int d = 0;
-    const short int* ptr = &d;
-
-    typedef float* ptr;
-    const float e = 0.0;
-    const float* const ptr = &e;
-
-    typedef char* ptr;
-    const char f = 0;
-    const char* ptr = &f;
-
-    double k = 0;
-    double * const  ptr = &k;
-
-    typedef unsigned int* ptr;
-    unsigned int r = 0;
-    unsigned int* const  ptr = &r;
-
 
     /*Task2*/
+	std::cout << "/*Task2.9.12*/" << std::endl;
     int length = 0;
     std::cin >> length;   
     double * array = memory_for_array( length);
     elements(array, length);
     show_array(array, length);
     delete_array(array, length);
+	std::cout << " " << std::endl;
 
-    
+	/*Homework 9.12*/
+	/*Task3*/
+	std::cout << "/*Task3.9.12*/" << std::endl;
+	int m = 12;
+	int* array1 = memory_for_array1(m);
+	elements1(array1, m);
+	change_elements(array1, m);
+	show_array1(array1, m);
+	delete_array1(array1, m);
+	std::cout << " " << std::endl;
+
 
     /*Task4*/
+	std::cout << "/*Task4.9.12*/" << std::endl;
     int rows =0;
     int cols = 0;
     std::cout << " enter rows count " << std::endl;
@@ -186,17 +193,58 @@ int main()
     print(arr, rows, cols);
     delete_arraydn(arr, rows, cols);
     delete_arraydn1(arr, rows, cols);
+	std::cout << " " << std::endl;
 
-	/*Homework 2.12*/
+	/*Task5*/
+	std::cout << "/*Task5.9.12*/" << std::endl;
+	int num1, num2;
+	char operation;
+	while (std::cin.get() != '\n'); //отчистили поток ввода
+	operation = std::cin.get();
+	if (operation == ' ') {
+		std::cout << std::endl << "A space has been entered!" << std::endl;
+		return 0;
+	}
+	int (*operationFunc)(int, int); // Указатель на функцию
+
+	while ((operation == '+') || (operation == '-') || (operation == '*') || (operation == '/')) {
+		if (operation == '+') {
+			operationFunc = add;
+			std::cout << std::endl << "Answer: " << operationFunc(num1, num2) << std::endl;
+		}
+		else if (operation == '-') {
+			operationFunc = subtract;
+			std::cout << std::endl << "Answer: " << operationFunc(num1, num2) << std::endl;
+		}
+		else if (operation == '*') {
+			operationFunc = multiply;
+			std::cout << std::endl << "Answer: " << operationFunc(num1, num2) << std::endl;
+		}
+		else if (operation == '/') {
+			operationFunc = divide;
+			std::cout << std::endl << "Answer: " << operationFunc(num1, num2) << std::endl;
+		}
+		std::cout << std::endl << "Enter operation: ";
+		while (std::cin.get() != '\n'); //отчистили поток ввода
+		operation = std::cin.get();
+	}
+	if (operation == ' ') {
+		std::cout << std::endl << "Wrong operation!" << std::endl;
+	}
+	else {
+		std::cout << std::endl << "A completely incorrect operation is being entered!" << std::endl;
+	}
+
+/*Homework 2.12*/
 /*Task3*/
 	std::cout << "/*Task3*/" << std::endl;
 	int n = 0;
 	std::cin >> n;
-	int* array = memory_for_array(n);
-	elements(array, n);
-	change_array(array, n);
-	show_array(array, n);
-	delete_array(array, n);
+	int* array2 = memory_for_array1(n);
+	elements1(array2, n);
+	change_array(array2, n);
+	show_array1(array2, n);
+	delete_array1(array2, n);
 	std::cout << "" << std::endl;
 
 	/*Task4*/
@@ -210,54 +258,6 @@ int main()
 	delete* p;
 	delete p;
 	std::cout << "" << std::endl;
-
-	/*Homework 9.12*/
-	/*Task3*/
-	std::cout << "/*Task4.9.12*/" << std::endl;
-	int m = 12;
-	int* array1 = memory_for_array(m);
-	elements(array1, m);
-	change_elements(array1, m);
-	show_array(array1, m);
-	delete_array(array1, m);
-	std::cout << "" << std::endl;
-
-	/*Task5*/
-	int num1, num2;
-	char operation;
-
-	int (*operationFunc)(int, int); // Указатель на функцию
-
-	while (true) {
-		std::cout << "Enter two digits and symbol of operation: ";
-		std::cin >> num1 >> num2 >> operation;
-
-		if (operation == ' ') {
-			break;
-		}
-		// Установка указателя на соответствующую функцию в зависимости от символа операции
-		switch (operation) {
-		case '+':
-			operationFunc = add;
-			break;
-		case '-':
-			operationFunc = subtract;
-			break;
-		case '*':
-			operationFunc = multiply;
-			break;
-		case '/':
-			operationFunc = divide;
-			break;
-
-			// Вызов функции, указанной указателем, и вывод результата
-			int result = operationFunc(num1, num2);
-			std::cout << "Result: " << result << std::endl;
-		}
-
-		return 0;
-	}
-
 
 
     return 0;
