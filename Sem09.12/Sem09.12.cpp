@@ -66,7 +66,7 @@ int add(int a, int b) {
 	return a + b;
 }
 
-int subtract(int a, int b) {
+int substract(int a, int b) {
 	return a - b;
 }
 
@@ -157,18 +157,44 @@ void print(int** arr, int rows, int cols)
 
 int main()
 {
+    /*Homework 2.12*/
+
+    /*Task3*/
+    std::cout << "/*Task3*/" << std::endl;
+    int n = 0;
+    std::cin >> n;
+    int* array2 = memory_for_array1(n);
+    elements1(array2, n);
+    change_array(array2, n);
+    show_array1(array2, n);
+    delete_array1(array2, n);
+    std::cout << "" << std::endl;
+
+    /*Task4*/
+    std::cout << "/*Task4*/" << std::endl;
+    double** p = 0;
+    p = new double*;
+    *p = new double;
+    **p = 2;
+    std::cout << **p << std::endl;
+    std::cout << "";
+    delete* p;
+    delete p;
+    std::cout << "" << std::endl;
+
+	/*Homework 9.12*/
 
     /*Task2*/
-	std::cout << "/*Task2.9.12*/" << std::endl;
+    std::cout << "/*Task2.9.12*/" << std::endl;
     int length = 0;
-    std::cin >> length;   
-    double * array = memory_for_array( length);
+    std::cin >> length;
+    double* array = memory_for_array(length);
     elements(array, length);
     show_array(array, length);
     delete_array(array, length);
-	std::cout << " " << std::endl;
+    std::cout << " " << std::endl;
 
-	/*Homework 9.12*/
+
 	/*Task3*/
 	std::cout << "/*Task3.9.12*/" << std::endl;
 	int m = 12;
@@ -195,70 +221,49 @@ int main()
     delete_arraydn1(arr, rows, cols);
 
 	/*Task5*/
-	std::cout << "/*Task5.9.12*/" << std::endl;
-	int num1 = 0;
-	int num2 = 0;
-	char operation;
-	while (std::cin.get() != '\n'); //отчистили поток ввода
-	operation = std::cin.get();
-	if (operation == ' ') {
-		std::cout << std::endl << "A space has been entered!" << std::endl;
-		return 0;
-	}
-	int (*operationFunc)(int, int); // Указатель на функцию
-
-	while ((operation == '+') || (operation == '-') || (operation == '*') || (operation == '/')) {
-		if (operation == '+') {
-			operationFunc = add;
-			std::cout << std::endl << "Answer: " << operationFunc(num1, num2) << std::endl;
-		}
-		else if (operation == '-') {
-			operationFunc = subtract;
-			std::cout << std::endl << "Answer: " << operationFunc(num1, num2) << std::endl;
-		}
-		else if (operation == '*') {
-			operationFunc = multiply;
-			std::cout << std::endl << "Answer: " << operationFunc(num1, num2) << std::endl;
-		}
-		else if (operation == '/') {
-			operationFunc = divide;
-			std::cout << std::endl << "Answer: " << operationFunc(num1, num2) << std::endl;
-		}
-		std::cout << std::endl << "Enter operation: ";
-		while (std::cin.get() != '\n'); //отчистили поток ввода
-		operation = std::cin.get();
-	}
-	if (operation == ' ') {
-		std::cout << std::endl << "Wrong operation!" << std::endl;
-	}
-	else {
-		std::cout << std::endl << "A completely incorrect operation is being entered!" << std::endl;
-	}
-
-/*Homework 2.12*/
-/*Task3*/
-	std::cout << "/*Task3*/" << std::endl;
-	int n = 0;
-	std::cin >> n;
-	int* array2 = memory_for_array1(n);
-	elements1(array2, n);
-	change_array(array2, n);
-	show_array1(array2, n);
-	delete_array1(array2, n);
-	std::cout << "" << std::endl;
-
-	/*Task4*/
-	std::cout << "/*Task4*/" << std::endl;
-	double** p = 0;
-	p = new double*;
-	*p = new double;
-	**p = 2;
-	std::cout << **p << std::endl;
-	std::cout << "";
-	delete* p;
-	delete p;
-	std::cout << "" << std::endl;
-
+    std::cout << "/*Task5.9.12*/" << std::endl;
+    int num_1;
+    int num_2;
+    std::cout << std::endl << "Enter a (integer): ";
+    std::cin >> num_1;
+    std::cout << std::endl << "Enter b (integer): ";
+    std::cin >> num_2;
+    std::cout << std::endl << "Enter operation: ";
+    char op;
+    while (std::cin.get() != '\n'); //отчистили поток ввода
+    op = std::cin.get();
+    if (op == ' ') {
+        std::cout << std::endl << "A space has been entered!" << std::endl;
+        return 0;
+    }
+    int (*operation) (int, int);
+    while ((op == '+') || (op == '-') || (op == '*') || (op == '/')) {
+        if (op == '+') {
+            operation = add;
+            std::cout << std::endl << "Answer: " << operation(num_1, num_2) << std::endl;
+        }
+        else if (op == '-') {
+            operation = substract;
+            std::cout << std::endl << "Answer: " << operation(num_1, num_2) << std::endl;
+        }
+        else if (op == '*') {
+            operation = multiply;
+            std::cout << std::endl << "Answer: " << operation(num_1, num_2) << std::endl;
+        }
+        else if (op == '/') {
+            operation = divide;
+            std::cout << std::endl << "Answer: " << operation(num_1, num_2) << std::endl;
+        }
+        std::cout << std::endl << "Enter operation: ";
+        while (std::cin.get() != '\n'); //отчистили поток ввода
+        op = std::cin.get();
+    }
+    if (op == ' ') {
+        std::cout << std::endl << "Wrong operation!" << std::endl;
+    }
+    else {
+        std::cout << std::endl << "A completely incorrect operation is being entered!" << std::endl;
+    }
 
     return 0;
 }
