@@ -191,9 +191,8 @@ int main()
     int** arr = create(rows, cols);
     input(arr, rows, cols);
     print(arr, rows, cols);
-    delete_arraydn(arr, rows, cols);
+    //delete_arraydn(arr, rows, cols);
     delete_arraydn1(arr, rows, cols);
-	std::cout << " " << std::endl;
 
 	/*Task5*/
 	std::cout << "/*Task5.9.12*/" << std::endl;
